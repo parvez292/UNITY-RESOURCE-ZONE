@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>UNITY RESOURCE ZONE · প্রিমিয়াম PWA</title>
+
+    <!-- ========== PWA (Progressive Web App) কনফিগারেশন ========== -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#00ffc3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://i.ibb.co.com/BYqbZTH/IMG-20260305-064757.png">
+    <!-- অ্যান্ড্রয়েড হোমস্ক্রিন আইকনের জন্য -->
+    <link rel="icon" sizes="192x192" href="https://i.ibb.co.com/BYqbZTH/IMG-20260305-064757.png">
+    <link rel="icon" sizes="512x512" href="https://i.ibb.co.com/BYqbZTH/IMG-20260305-064757.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ========== প্রিমিয়াম হ্যাকার নিওন থিম (আলটিমেট) ========== */
+        :root {
+            --bg-deep: #0a0e0f;
+            --bg-card: #141a1c;
+            --accent-primary: #00ffc3;
+            --accent-secondary: #7b2cff;
+            --accent-glow: rgba(0, 255, 195, 0.7);
+            --text-head: #f0fff0;
+            --text-body: #b2f0d0;
+            --glass-border: rgba(0, 255, 200, 0.25);
+            --gradient-prime: linear-gradient(135deg, #00ffc3, #7b2cff);
+            --gradient-card: linear-gradient(145deg, rgba(20, 26, 28, 0.95), rgba(10, 20, 18, 0.98));
+            --shadow-heavy: 0 20px 40px rgba(0,0,0,0.8), 0 0 0 1px rgba(0,255,200,0.15);
+            --font-display: 'Clash Display', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-deep);
+            color: var(--text-body);
+            font-family: var(--font-body);
+            line-height: 1.5;
+            min-height: 100vh;
+            letter-spacing: 0.3px;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a2326;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-prime);
+            border-radius: 10px;
+            box-shadow: 0 0 15px var(--accent-primary);
+        }
+
+        /* ===== হেডার ===== */
+        .header {
+            background: rgba(10, 14, 15, 0.85);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 18px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 10px 30px -10px rgba(0,255,200,0.2);
+        }
+
+        .header-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            font-family: var(--font-display);
+            background: var(--gradient-prime);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(0,255,195,0.5);
+            letter-spacing: -0.5px;
+            text-align: center;
+            animation: headerShine 3s infinite;
+        }
+
+        @keyframes headerShine {
+            0% { text-shadow: 0 0 10px rgba(0,255,195,0.3), 0 0 20px rgba(123,44,255,0.2); }
+            50% { text-shadow: 0 0 25px rgba(0,255,195,0.9), 0 0 40px rgba(123,44,255,0.6); }
+            100% { text-shadow: 0 0 10px rgba(0,255,195,0.3), 0 0 20px rgba(123,44,255,0.2); }
+        }
+
+        /* ===== ক্যাটাগরি টগল ===== */
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin: 30px 20px 20px;
+            padding: 0 15px;
+        }
+
+        .cat-btn {
+            background: transparent;
+            border: 1.5px solid var(--accent-primary);
+            color: var(--accent-primary);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 12px 28px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.2,0.9,0.3,1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            backdrop-filter: blur(4px);
+            background: rgba(0, 255, 195, 0.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            flex: 0 1 auto;
+            text-decoration: none;
+        }
+
+        .cat-btn:hover {
+            background: var(--accent-primary);
+            color: #0a0e0f;
+            border-color: transparent;
+            box-shadow: 0 0 25px var(--accent-primary);
+            transform: translateY(-4px);
+        }
+
+        .cat-btn.active {
+            background: var(--gradient-prime);
+            color: #0a0e0f;
+            border-color: transparent;
+            font-weight: 700;
+            box-shadow: 0 0 30px var(--accent-primary);
+        }
+
+        .cat-btn.offlink {
+            border-color: var(--accent-secondary);
+            color: var(--accent-secondary);
+            background: rgba(123, 44, 255, 0.03);
+            text-decoration: none;
+        }
+        .cat-btn.offlink:hover {
+            background: var(--accent-secondary);
+            color: #0a0e0f;
+            box-shadow: 0 0 25px var(--accent-secondary);
+            border-color: transparent;
+        }
+
+        /* ===== মার্কি ===== */
+        .marquee-container {
+            background: rgba(0, 255, 200, 0.05);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 15px 0;
+            margin: 0 0 30px;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0,255,200,0.1);
+        }
+
+        .marquee-text {
+            color: var(--accent-primary);
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            white-space: nowrap;
+            display: inline-block;
+            animation: scrollMarquee 35s linear infinite;
+            text-shadow: 0 0 8px currentColor;
+        }
+
+        @keyframes scrollMarquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ===== মূল কন্টেইনার ===== */
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 12px 40px;
+        }
+
+        .screen {
+            display: none;
+            animation: fadeReveal 0.4s ease-out;
+        }
+        .screen.active {
+            display: block;
+        }
+        @keyframes fadeReveal {
+            0% { opacity: 0; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* ===== ফ্লোটিং ব্যাক বাটন ===== */
+        .floating-back {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(0, 255, 200, 0.15);
+            border: 2px solid var(--accent-primary);
+            color: var(--accent-primary);
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 25px rgba(0,255,200,0.3);
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .floating-back:hover {
+            background: var(--accent-primary);
+            color: #0a0e0f;
+            box-shadow: 0 0 40px var(--accent-primary);
+            transform: scale(1.1);
+        }
+
+        /* ===== সার্চ ও ফিল্টার সেকশন ===== */
+        .filter-section {
+            background: rgba(20, 26, 28, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 15px 20px;
+            margin: 0 0 30px 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .search-box {
+            flex: 2;
+            min-width: 250px;
+            display: flex;
+            align-items: center;
+            background: rgba(0,0,0,0.3);
+            border-radius: 40px;
+            border: 1px solid var(--glass-border);
+            padding: 0 15px;
+        }
+        .search-box i {
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        .search-box input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 12px 0;
+            color: var(--text-head);
+            font-size: 1rem;
+            outline: none;
+        }
+        .search-box input::placeholder {
+            color: var(--text-dim);
+            opacity: 0.7;
+        }
+
+        .filter-dropdowns {
+            flex: 3;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+        .filter-select {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            padding: 10px 20px;
+            color: var(--text-head);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+            min-width: 150px;
+        }
+        .filter-select option {
+            background: var(--bg-deep);
+            color: var(--text-head);
+        }
+
+        /* ===== রিসোর্স গ্রিড ===== */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 900px) {
+            .resource-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== প্রিমিয়াম কার্ড ===== */
+        .resource-card {
+            background: var(--gradient-card);
+            border-radius: 32px;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.2,0.9,0.3,1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-heavy);
+            backdrop-filter: blur(8px);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 2px;
+            border-radius: 32px;
+            background: var(--gradient-prime);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.3;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 50px rgba(0,255,200,0.3);
+        }
+        .resource-card:hover::before {
+            opacity: 0.9;
+        }
+
+        .card-slider {
+            width: 100%;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            margin-bottom: 15px;
+            border: 2px solid transparent;
+            background: var(--bg-deep);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+        }
+        .slider-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .slider-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .slider-img.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .category-tag-corner {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--accent-primary);
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-primary);
+            box-shadow: 0 0 15px rgba(0,255,200,0.2);
+            z-index: 10;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .resource-card:hover .category-tag-corner {
+            opacity: 1;
+            box-shadow: 0 0 20px var(--accent-primary);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: var(--font-display);
+            background: linear-gradient(135deg, #fff, var(--accent-primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .card-desc {
+            color: var(--text-body);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            opacity: 0.9;
+            flex: 1;
+        }
+
+        .detail-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: rgba(0, 255, 200, 0.08);
+            border: 1.5px solid var(--accent-primary);
+            color: var(--accent-primary);
+            font-weight: 600;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(4px);
+            width: fit-content;
+            overflow: hidden;
+            isolation: isolate;
+            box-shadow: 0 0 15px rgba(0,255,200,0.2);
+            align-self: flex-start;
+        }
+        .detail-btn i {
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .detail-btn span {
+            position: relative;
+            z-index: 2;
+        }
+        .detail-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 200, 0.4), transparent);
+            transform: skewX(-25deg);
+            animation: beam 3s infinite ease-in-out;
+            z-index: 1;
+        }
+        .detail-btn:hover {
+            background: var(--accent-primary);
+            color: #0a0e0f;
+            box-shadow: 0 0 30px var(--accent-primary);
+            border-color: transparent;
+        }
+        .detail-btn:hover::after {
+            animation-duration: 1.8s;
+        }
+
+        @keyframes beam {
+            0% { left: -150%; }
+            30% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        /* ===== ডিটেইল পৃষ্ঠা ===== */
+        .detail-container {
+            background: var(--gradient-card);
+            border-radius: 40px;
+            padding: 35px;
+            border: 2px solid transparent;
+            position: relative;
+            box-shadow: var(--shadow-heavy);
+            margin-top: 60px;
+        }
+        .detail-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            padding: 2px;
+            border-radius: 40px;
+            background: var(--gradient-prime);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .detail-images {
+            width: 100%;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            margin-bottom: 35px;
+            border: 3px solid var(--accent-primary);
+            box-shadow: 0 0 30px rgba(0,255,200,0.4);
+        }
+
+        .detail-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            background: rgba(10, 20, 18, 0.7);
+            padding: 30px;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+            margin: 35px 0;
+            backdrop-filter: blur(16px);
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .info-label {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(90deg, #00ffc3, #7b2cff, #00ffc3);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shineText 3s linear infinite;
+            font-weight: 600;
+        }
+        .info-label i {
+            font-size: 1.3rem;
+            filter: drop-shadow(0 0 8px var(--accent-primary));
+            color: var(--accent-primary);
+            background: none;
+            animation: neonPulse 1.8s infinite alternate;
+        }
+
+        @keyframes shineText {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes neonPulse {
+            0% { filter: drop-shadow(0 0 5px var(--accent-primary)); opacity: 0.9; }
+            100% { filter: drop-shadow(0 0 15px var(--accent-primary)) drop-shadow(0 0 25px #7b2cff); opacity: 1; }
+        }
+
+        .info-value {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ffffff;
+            word-break: break-word;
+            line-height: 1.4;
+            font-family: var(--font-display);
+            text-shadow: 0 0 10px rgba(0,255,200,0.3);
+        }
+
+        .download-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .download-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 52px;
+            background: var(--gradient-prime);
+            border: none;
+            color: #0a0e0f;
+            font-weight: 700;
+            font-size: 1.5rem;
+            border-radius: 80px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 0 25px var(--accent-primary);
+            border: 1px solid rgba(255,255,255,0.2);
+            min-width: 300px;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        .download-btn i {
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 2;
+        }
+        .download-btn span {
+            position: relative;
+            z-index: 2;
+        }
+        .download-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            transform: skewX(-25deg);
+            animation: beam 3s infinite ease-in-out;
+            z-index: 1;
+        }
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 45px var(--accent-primary);
+            background: linear-gradient(135deg, #7b2cff, #00ffc3);
+        }
+        .download-btn:hover::after {
+            animation-duration: 1.8s;
+        }
+
+        /* ভিডিও টিউটোরিয়াল লিংক */
+        .video-tutorial-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--accent-secondary);
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 10px 25px;
+            border: 1px solid var(--accent-secondary);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: rgba(123, 44, 255, 0.05);
+            backdrop-filter: blur(4px);
+        }
+        .video-tutorial-link i {
+            font-size: 1.3rem;
+            animation: neonPulse 2s infinite;
+        }
+        .video-tutorial-link:hover {
+            background: var(--accent-secondary);
+            color: #0a0e0f;
+            box-shadow: 0 0 25px var(--accent-secondary);
+            border-color: transparent;
+        }
+
+        /* ===== মোবাইল অ্যাডজাস্ট ===== */
+        @media (max-width: 700px) {
+            .header-title { font-size: 1.8rem; }
+            .cat-btn { font-size: 0.75rem; padding: 8px 18px; }
+            .filter-section { flex-direction: column; border-radius: 30px; }
+            .search-box { width: 100%; }
+            .filter-dropdowns { width: 100%; justify-content: center; }
+            .filter-select { width: 100%; }
+            .resource-grid { grid-template-columns: 1fr; }
+            .detail-images { height: 240px; }
+            .detail-info { grid-template-columns: 1fr; padding: 20px; }
+            .info-value { font-size: 1.1rem; }
+            .download-btn { font-size: 1.2rem; padding: 14px 30px; min-width: 240px; }
+            .detail-btn { width: 100%; justify-content: center; }
+            .category-tag-corner { font-size: 0.65rem; padding: 4px 12px; }
+            .floating-back { top: 10px; left: 10px; width: 44px; height: 44px; font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="header-title">UNITY RESOURCE ZONE</h1>
+    </div>
+
+    <div class="category-nav">
+        <button class="cat-btn active" data-cat="all">সকল</button>
+        <button class="cat-btn" data-cat="skins">SKINS</button>
+        <button class="cat-btn" data-cat="mods">MODS</button>
+        <button class="cat-btn" data-cat="apk">APK & OBB</button>
+        <button class="cat-btn" data-cat="codename">CODENAME</button>
+        <a href="https://parvez292.github.io/UNITY_BUSSID_GAMING/?fbclid=IwY2xjawOOVHlleHRuA2FlbQIxMQBzcnRjBmFwcF9pZAwzNTA2ODU1MzE3MjgAAR4sAKi4R-tXvfuaCDsxdnBkXf4WxVm58fo4DZ0_qKTJkXt8M_-ZNOMGGiHLgw_aem_V3CzyK7sbLoCYzjA1Nf7kQ" target="_blank" class="cat-btn offlink">OFFICIAL WEB</a>
+    </div>
+
+    <div class="marquee-container">
+        <div class="marquee-text" id="globalMarquee">লোড হচ্ছে...</div>
+    </div>
+
+    <main>
+        <div id="all-screen" class="screen active"></div>
+        <div id="skins-screen" class="screen"></div>
+        <div id="mods-screen" class="screen"></div>
+        <div id="apk-screen" class="screen"></div>
+        <div id="codename-screen" class="screen"></div>
+
+        <div id="detail-screen" class="screen">
+            <div class="floating-back" onclick="hideDetail()">←</div>
+            <div class="detail-container" id="detailContainer"></div>
+        </div>
+    </main>
+
+    <!-- ========== PWA Service Worker Registration ========== -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+                    console.log('✅ ServiceWorker registration successful with scope: ', registration.scope);
+                }, function(err) {
+                    console.log('❌ ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+
+        // মার্কি আপডেট, ডেটা ও ফাংশন (আগের মতোই)
+        const resourceData = {
+            skins: [
+                {
+                    id: 'skin1',
+                    title: 'নিওন স্পোর্টস স্কিন',
+                    description: 'আধুনিক নিওন লাইন সহ স্পোর্টস বাস স্কিন। রাতের ট্রিপের জন্য অসাধারণ।',
+                    images: [
+                        'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=400&h=300&fit=crop',
+                        'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=300&fit=crop',
+                        'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=300&fit=crop'
+                    ],
+                    name: 'Neon Sports Skin',
+                    supported: 'BUSSID v3.7 - v4.0',
+                    size: '12 MB',
+                    creator: 'PARVEZ AKANDA',
+                    download: 'https://example.com/skin1.zip',
+                    date: '2025-03-15',
+                    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+                },
+                {
+                    id: 'skin2',
+                    title: 'ক্লাসিক রেট্রো স্কিন',
+                    description: 'পুরনো দিনের ক্লাসিক বাসের ডিজাইন। ভিনটেজ লুক।',
+                    images: [
+                        'https://images.unsplash.com/photo-1591280063444-d3c70a3d92b6?w=400&h=300&fit=crop',
+                        'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=400&h=300&fit=crop'
+                    ],
+                    name: 'Retro Classic',
+                    supported: 'BUSSID v3.5+',
+                    size: '8.5 MB',
+                    creator: 'LAKSHMAN PAL',
+                    download: 'https://example.com/skin2.zip',
+                    date: '2025-03-10',
+                    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+                }
+            ],
+            mods: [
+                {
+                    id: 'mod1',
+                    title: 'রিয়ালিস্টিক ফুয়েল মড',
+                    description: 'বাস্তবসম্মত জ্বালানি খরচ ও পাম্প সিস্টেম।',
+                    images: [
+                        'https://images.unsplash.com/photo-1591280063444-d3c70a3d92b6?w=400&h=300&fit=crop',
+                        'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=400&h=300&fit=crop'
+                    ],
+                    name: 'Realistic Fuel Mod',
+                    supported: 'BUSSID v3.8 - v4.1',
+                    size: '5 MB',
+                    creator: 'ATIKUR RAHAMAN',
+                    download: 'https://example.com/mod1.zip',
+                    date: '2025-03-18',
+                    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+                },
+                {
+                    id: 'mod2',
+                    title: 'এইচডি ট্রাফিক মড',
+                    description: 'ট্রাফিক গাড়ির সংখ্যা ও বৈচিত্র্য দ্বিগুণ।',
+                    images: [
+                        'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=300&fit=crop',
+                        'https://images.unsplash.com/photo-1570125909232-eb263c188f7e?w=400&h=300&fit=crop'
+                    ],
+                    name: 'HD Traffic Mod',
+                    supported: 'BUSSID v3.9+',
+                    size: '10 MB',
+                    creator: 'PARVEZ AKANDA',
+                    download: 'https://example.com/mod2.zip',
+                    date: '2025-03-12',
+                    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+                }
+            ],
+            apk: [
+                {
+                    id: 'apk1',
+                    title: 'BUSSID v4.2 লাইট',
+                    description: 'অফিসিয়াল বাস সিমুলেটর ইন্দোনেশিয়া লাইট ভার্সন।',
+                    images: [
+                        'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=400&h=300&fit=crop',
+                        'https://images.unsplash.com/photo-1591280063444-d3c70a3d92b6?w=400&h=300&fit=crop'
+                    ],
+                    name: 'BUSSID v4.2 Lite',
+                    supported: 'Android 8+',
+                    size: '45 MB',
+                    creator: 'Maleo Dev',
+                    download: 'https://example.com/bussid.apk',
+                    date: '2025-03-20',
+                    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+                }
+            ],
+            codename: [
+                {
+                    id: 'code1',
+                    title: 'প্রজেক্ট সাইরেন',
+                    description: 'গোপন কোডনেম — আসল পরিচয় গোপন রাখতে।',
+                    images: [
+                        'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&h=300&fit=crop',
+                        'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=400&h=300&fit=crop'
+                    ],
+                    name: 'Project Siren',
+                    supported: 'সকল প্ল্যাটফর্ম',
+                    size: 'N/A',
+                    creator: 'UBDG TEAM',
+                    download: '#',
+                    date: '2025-03-05',
+                    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+                }
+            ]
+        };
+
+        let currentCategory = 'all';
+        let currentFilter = { search: '', creator: '', supported: '', size: '' };
+
+        function updateMarquee() {
+            const titles = [];
+            for (let cat in resourceData) {
+                resourceData[cat].forEach(item => titles.push(item.title));
+            }
+            const marquee = document.getElementById('globalMarquee');
+            marquee.innerHTML = '⚡ ' + titles.join(' ⚡  ⚡ ') + ' ⚡';
+        }
+
+        function getAllItemsSorted() {
+            let all = [];
+            for (let cat in resourceData) {
+                resourceData[cat].forEach(item => {
+                    all.push({ ...item, category: cat });
+                });
+            }
+            return all.sort((a, b) => new Date(b.date) - new Date(a.date));
+        }
+
+        function filterItems(items) {
+            return items.filter(item => {
+                const searchMatch = currentFilter.search === '' || 
+                    item.title.toLowerCase().includes(currentFilter.search.toLowerCase()) ||
+                    item.description.toLowerCase().includes(currentFilter.search.toLowerCase()) ||
+                    item.creator.toLowerCase().includes(currentFilter.search.toLowerCase());
+                
+                const creatorMatch = currentFilter.creator === '' || item.creator === currentFilter.creator;
+                const supportedMatch = currentFilter.supported === '' || item.supported === currentFilter.supported;
+                const sizeMatch = currentFilter.size === '' || item.size === currentFilter.size;
+                
+                return searchMatch && creatorMatch && supportedMatch && sizeMatch;
+            });
+        }
+
+        function getUniqueValues(items, key) {
+            return [...new Set(items.map(item => item[key]))].filter(v => v).sort();
+        }
+
+        function renderFilterSection(container, items) {
+            const creators = getUniqueValues(items, 'creator');
+            const supported = getUniqueValues(items, 'supported');
+            const sizes = getUniqueValues(items, 'size');
+
+            const filterHtml = `
+                <div class="filter-section">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="সার্চ করুন (নাম, বর্ণনা, ক্রিয়েটর)" value="${currentFilter.search}">
+                    </div>
+                    <div class="filter-dropdowns">
+                        <select class="filter-select" id="creatorFilter">
+                            <option value="">ক্রিয়েটর (সব)</option>
+                            ${creators.map(c => `<option value="${c}" ${currentFilter.creator === c ? 'selected' : ''}>${c}</option>`).join('')}
+                        </select>
+                        <select class="filter-select" id="supportedFilter">
+                            <option value="">সাপোর্টেড (সব)</option>
+                            ${supported.map(s => `<option value="${s}" ${currentFilter.supported === s ? 'selected' : ''}>${s}</option>`).join('')}
+                        </select>
+                        <select class="filter-select" id="sizeFilter">
+                            <option value="">সাইজ (সব)</option>
+                            ${sizes.map(s => `<option value="${s}" ${currentFilter.size === s ? 'selected' : ''}>${s}</option>`).join('')}
+                        </select>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('afterbegin', filterHtml);
+
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                currentFilter.search = e.target.value;
+                applyFilterAndRender();
+            });
+            document.getElementById('creatorFilter').addEventListener('change', (e) => {
+                currentFilter.creator = e.target.value;
+                applyFilterAndRender();
+            });
+            document.getElementById('supportedFilter').addEventListener('change', (e) => {
+                currentFilter.supported = e.target.value;
+                applyFilterAndRender();
+            });
+            document.getElementById('sizeFilter').addEventListener('change', (e) => {
+                currentFilter.size = e.target.value;
+                applyFilterAndRender();
+            });
+        }
+
+        function renderCategory(catId) {
+            const screen = document.getElementById(`${catId}-screen`);
+            if (!screen) return;
+
+            let allItems = [];
+            if (catId === 'all') {
+                allItems = getAllItemsSorted();
+            } else {
+                allItems = resourceData[catId]?.map(item => ({ ...item, category: catId })) || [];
+            }
+
+            if (allItems.length === 0) {
+                screen.innerHTML = `<div style="text-align:center; padding:50px; color:var(--text-dim);">কোনো পোস্ট নেই</div>`;
+                return;
+            }
+
+            const filteredItems = filterItems(allItems);
+
+            let html = `<div class="filter-section-placeholder"></div>`;
+            html += `<div class="resource-grid" id="grid-${catId}">`;
+            
+            filteredItems.forEach(item => {
+                let slides = '';
+                item.images.forEach((img, idx) => {
+                    slides += `<img src="${img}" alt="slide" class="slider-img ${idx === 0 ? 'active' : ''}">`;
+                });
+
+                const catDisplay = item.category.toUpperCase();
+
+                html += `
+                    <div class="resource-card" data-id="${item.id}" data-cat="${catId}">
+                        <div class="card-slider">
+                            <div class="slider-container">${slides}</div>
+                            <span class="category-tag-corner"><i class="fas fa-tag"></i> ${catDisplay}</span>
+                        </div>
+                        <h3 class="card-title">${item.title}</h3>
+                        <p class="card-desc">${item.description}</p>
+                        <button class="detail-btn" onclick="showDetail('${item.category}', '${item.id}')"><i class="fas fa-eye"></i> <span>বিস্তারিত জানুন</span></button>
+                    </div>
+                `;
+            });
+            html += `</div>`;
+            screen.innerHTML = html;
+
+            const placeholder = screen.querySelector('.filter-section-placeholder');
+            renderFilterSection(placeholder, allItems);
+
+            setTimeout(() => {
+                const sliders = screen.querySelectorAll('.card-slider');
+                sliders.forEach(slider => {
+                    const imgs = slider.querySelectorAll('.slider-img');
+                    if (imgs.length < 2) return;
+                    let idx = 0;
+                    setInterval(() => {
+                        imgs[idx].classList.remove('active');
+                        idx = (idx + 1) % imgs.length;
+                        imgs[idx].classList.add('active');
+                    }, 3000);
+                });
+            }, 200);
+        }
+
+        function applyFilterAndRender() {
+            renderCategory(currentCategory);
+        }
+
+        function showDetail(catId, itemId) {
+            const category = resourceData[catId];
+            if (!category) return;
+            const item = category.find(i => i.id === itemId);
+            if (!item) return;
+
+            let slides = '';
+            item.images.forEach((img, idx) => {
+                slides += `<img src="${img}" alt="detail" class="slider-img ${idx === 0 ? 'active' : ''}">`;
+            });
+
+            const detailHtml = `
+                <div class="detail-images">
+                    <div class="slider-container">${slides}</div>
+                </div>
+                <div class="detail-info">
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-cube"></i> NAME</span>
+                        <span class="info-value">${item.name}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-mobile-alt"></i> SUPPORTED FOR</span>
+                        <span class="info-value">${item.supported}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-database"></i> SIZE</span>
+                        <span class="info-value">${item.size}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label"><i class="fas fa-user-astronaut"></i> CREATOR</span>
+                        <span class="info-value">${item.creator}</span>
+                    </div>
+                </div>
+                <div class="download-wrapper">
+                    <a href="${item.download}" target="_blank" class="download-btn"><i class="fas fa-download"></i> <span>ডাউনলোড NOW</span></a>
+                    ${item.videoUrl ? `
+                        <a href="${item.videoUrl}" target="_blank" class="video-tutorial-link">
+                            <i class="fab fa-youtube"></i> কিভাবে সেটআপ করব?
+                        </a>
+                    ` : ''}
+                </div>
+            `;
+
+            document.getElementById('detailContainer').innerHTML = detailHtml;
+
+            setTimeout(() => {
+                const imgs = document.querySelectorAll('.detail-images .slider-img');
+                if (imgs.length > 1) {
+                    let idx = 0;
+                    setInterval(() => {
+                        imgs[idx].classList.remove('active');
+                        idx = (idx + 1) % imgs.length;
+                        imgs[idx].classList.add('active');
+                    }, 3000);
+                }
+            }, 300);
+
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('detail-screen').classList.add('active');
+        }
+
+        function hideDetail() {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(`${currentCategory}-screen`).classList.add('active');
+        }
+
+        function switchCategory(catId) {
+            currentCategory = catId;
+            currentFilter = { search: '', creator: '', supported: '', size: '' };
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.dataset.cat === catId) btn.classList.add('active');
+                else btn.classList.remove('active');
+            });
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(`${catId}-screen`).classList.add('active');
+            renderCategory(catId);
+        }
+
+        document.querySelectorAll('.cat-btn[data-cat]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const cat = e.target.dataset.cat;
+                switchCategory(cat);
+            });
+        });
+
+        function init() {
+            renderCategory('all');
+            renderCategory('skins');
+            renderCategory('mods');
+            renderCategory('apk');
+            renderCategory('codename');
+            updateMarquee();
+            switchCategory('all');
+        }
+
+        init();
+    </script>
+
+    <!-- ===== manifest.json এর কন্টেন্ট (এটি আলাদা ফাইল হিসেবে save করুন) ===== -->
+    <!--
+        // manifest.json
+        {
+          "name": "UNITY RESOURCE ZONE",
+          "short_name": "URZ",
+          "description": "বাস সিমুলেটর গেমের জন্য স্কিন, মড, APK ও অন্যান্য রিসোর্সের ভান্ডার।",
+          "start_url": "/",
+          "display": "standalone",
+          "background_color": "#0a0e0f",
+          "theme_color": "#00ffc3",
+          "icons": [
+            {
+              "src": "https://i.ibb.co.com/BYqbZTH/IMG-20260305-064757.png",
+              "sizes": "192x192",
+              "type": "image/png"
+            },
+            {
+              "src": "https://i.ibb.co.com/BYqbZTH/IMG-20260305-064757.png",
+              "sizes": "512x512",
+              "type": "image/png"
+            }
+          ]
+        }
+    -->
+
+    <!-- ===== service-worker.js এর কন্টেন্ট (এটি আলাদা ফাইল হিসেবে save করুন) ===== -->
+    <!--
+        // service-worker.js
+        const CACHE_NAME = 'urz-cache-v1';
+        const urlsToCache = [
+          '/',
+          '/index.html',
+          'https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap',
+          'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+          'https://i.ibb.co.com/BYqbZTH/IMG-20260305-064757.png'
+        ];
+
+        self.addEventListener('install', event => {
+          event.waitUntil(
+            caches.open(CACHE_NAME)
+              .then(cache => cache.addAll(urlsToCache))
+          );
+        });
+
+        self.addEventListener('fetch', event => {
+          event.respondWith(
+            caches.match(event.request)
+              .then(response => response || fetch(event.request))
+          );
+        });
+    -->
+</body>
+</html>
