@@ -1,7 +1,6 @@
-# pagescms.config.yml
 backend:
   name: git-gateway
-  branch: main
+  branch: main  # অথবা আপনার ব্রাঞ্চের নাম (master)
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
@@ -16,18 +15,8 @@ collections:
     fields:
       - { label: "শিরোনাম", name: "title", widget: "string" }
       - { label: "বিবরণ", name: "description", widget: "text" }
-      - { 
-          label: "ক্যাটাগরি", 
-          name: "category", 
-          widget: "select", 
-          options: ["skins", "mods", "apk", "codename"] 
-        }
-      - { 
-          label: "ছবির লিংক", 
-          name: "images", 
-          widget: "list", 
-          field: { label: "ছবি", name: "url", widget: "string" } 
-        }
+      - { label: "ক্যাটাগরি", name: "category", widget: "select", options: ["skins", "mods", "apk", "codename"] }
+      - { label: "ছবির লিংক", name: "images", widget: "list", field: { label: "ছবি", name: "url", widget: "string" } }
       - { label: "নাম", name: "name", widget: "string" }
       - { label: "সাপোর্টেড ভার্সন", name: "supported", widget: "string" }
       - { label: "সাইজ", name: "size", widget: "string" }
